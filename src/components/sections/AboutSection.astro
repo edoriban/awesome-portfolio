@@ -99,6 +99,23 @@ const skills = [
 ];
 ---
 
+<!-- Scroll Down Indicator -->
+<div class="scroll-down-indicator">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="w-8 h-8 text-gray-400"
+    >
+        <path
+            d="M12 2C8.13 2 5 5.13 5 9v6c0 3.87 3.13 7 7 7s7-3.13 7-7V9c0-3.87-3.13-7-7-7zm0 2c2.76 0 5 2.24 5 5v6c0 2.76-2.24 5-5 5s-5-2.24-5-5V9c0-2.76 2.24-5 5-5z"
+        ></path>
+        <path
+            d="M12 6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1s1-.45 1-1V7c0-.55-.45-1-1-1z"
+        ></path>
+    </svg>
+</div>
+
 <div class="container mx-auto px-4 py-20 max-w-4xl">
     <h1 class="section-title mb-16 text-center relative" data-aos="fade-up">
         My Professional <span class="gradient-text">Journey</span>
@@ -106,7 +123,9 @@ const skills = [
 
     <!-- Introduction Section - Updated with LinkedIn About text -->
     <section class="mb-20">
-        <div class="premium-glass-panel p-8 rounded-xl shadow-glow">
+        <div
+            class="premium-glass-panel animated-border p-8 rounded-xl shadow-glow"
+        >
             <p class="text-lg lg:text-xl leading-relaxed mb-4 opacity-90">
                 I'm a software engineer based in Nuevo León, with 5+ years of
                 experience in the software industry. I have worked on a variety
@@ -116,13 +135,6 @@ const skills = [
                 I am proficient in languages such as JavaScript/TypeScript,
                 VBScript and C#, and have experience using frameworks like
                 ReactJs and ASP.NET.
-            </p>
-            <p class="text-lg lg:text-xl leading-relaxed opacity-90">
-                In my current role, I work on a team responsible for developing
-                and maintaining a large industrial software platform and some
-                other web applications. In my spare time, I enjoy staying up to
-                date with the latest trends and technologies in the field, and I
-                also like to spend time outdoors and stay active.
             </p>
         </div>
     </section>
@@ -436,7 +448,97 @@ const skills = [
             0 0 15px rgba(99, 102, 241, 0.2);
     }
 
-    section {
-        scroll-margin-top: 6rem;
+    .animated-border {
+        position: relative;
+        overflow: hidden;
+        border: none !important;
+        padding: 2px;
+        border-radius: 0.75rem;
+    }
+
+    .animated-border::before {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(
+            30deg,
+            transparent 0%,
+            transparent 33%,
+            #6366f1 45%,
+            #60a5fa 47%,
+            #a855f7 49%,
+            #6366f1 51%,
+            transparent 100%,
+            transparent 55%
+        );
+        background-size: 400%;
+        animation: borderMove 10s linear infinite;
+    }
+
+    .animated-border::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 2px;
+        background: rgb(24, 24, 27);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 0.7rem;
+    }
+
+    .premium-glass-panel.animated-border {
+        padding: 2rem;
+    }
+
+    @keyframes borderMove {
+        0% {
+            background-position: 50% 100%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 50% 100%;
+        }
+    }
+
+    .scroll-down-indicator {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    .scroll-down-indicator:hover {
+        opacity: 1;
+    }
+
+    @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+
+    /* Hide scroll indicator on larger screens or after some scroll */
+    /* You might want to add JavaScript to hide it after the user starts scrolling */
+    @media (min-width: 768px) {
+        /* Example: Hide on medium screens and up */
+        /* .scroll-down-indicator {
+            display: none;
+        } */
     }
 </style>

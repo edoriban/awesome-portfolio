@@ -4,7 +4,7 @@ const { githubData } = Astro.props;
 ---
 
 <section class="w-full lg:w-[740px] mx-auto pt-32 pb-16">
-    <div class="flex flex-col md:flex-row gap-8 items-start">
+    <div class="flex flex-col md:flex-row gap-12 items-start">
         <!-- Columna de imagen y estadísticas -->
         <div
             class="relative mb-4 md:mb-0 flex-shrink-0 flex flex-col items-center md:items-start"
@@ -22,18 +22,17 @@ const { githubData } = Astro.props;
         <!-- Columna de biografía -->
         <div>
             <h1
-                class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-4"
+                class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-6 pt-4"
             >
                 Hi, I'm Edgar
             </h1>
             <h2 class="text-xl opacity-80">
-                +5 years of experience. <span class="highlighted-role"
-                    >Fullstack Developer</span
-                > from Nuevo León, Mexico 🇲🇽. Passionate about crafting cutting-edge
-                web solutions that transform ideas into powerful digital experiences.
+                <span class="highlighted-role">Fullstack Developer</span> with +5
+                years of experience from Nuevo León, Mexico 🇲🇽.
             </h2>
-            <p class="text-xl opacity-70 mt-2">
-                Always eager to learn and adapt to new technologies.
+            <p class="text-xl opacity-70 pt-6">
+                Passionate about crafting cutting-edge web solutions that
+                transform ideas into powerful digital experiences.
             </p>
         </div>
     </div>
