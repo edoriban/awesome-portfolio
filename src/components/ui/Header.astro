@@ -1,0 +1,75 @@
+<header
+    id="main-header"
+    class="fixed top-0 left-0 right-0 z-50 flex justify-center py-3 transition-all duration-300 ease-in-out"
+>
+    <div class="flex justify-between items-center w-full max-w-[1120px] px-4">
+        <a href="/" aria-label="Go to homepage">
+            <img
+                class="rounded-full w-10 h-10 border-2 border-transparent hover:border-slate-400 transition"
+                src="https://avatars.githubusercontent.com/u/75331658?v=4"
+                alt="Edgar profile picture"
+            />
+        </a>
+        <nav
+            id="main-nav"
+            class="flex flex-row gap-x-6 sm:gap-x-10 text-sm sm:text-base"
+        >
+            <a href="/#top" class="hover:text-sky-400 transition">Home</a>
+            <a href="/#about" class="hover:text-sky-400 transition">About</a>
+            <a href="/#projects" class="hover:text-sky-400 transition"
+                >Projects</a
+            >
+            <a href="/#contact" class="hover:text-sky-400 transition">Contact</a
+            >
+        </nav>
+    </div>
+</header>
+
+<script>
+    const header = document.getElementById("main-header");
+
+    const handleScroll = () => {
+        if (header && window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+        } else if (header) {
+            header.classList.remove("header-scrolled");
+        }
+    };
+
+    if (header) {
+        document.addEventListener("scroll", handleScroll, { passive: true });
+
+        document.addEventListener("astro:page-load", () => {
+            handleScroll();
+        });
+
+        handleScroll();
+    } else {
+        console.warn("Element with ID 'main-header' not found.");
+    }
+</script>
+
+<style>
+    #main-header {
+        /* Initial transparent state */
+        border-bottom: 1px solid rgba(255, 255, 255, 0); /* Borde invisible */
+        transition:
+            background-color 0.3s ease-in-out,
+            backdrop-filter 0.3s ease-in-out,
+            border-color 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out;
+    }
+
+    #main-header.header-scrolled {
+        background-color: rgba(
+            15,
+            23,
+            42,
+            0.2
+        ); /* slate-900 with transparency */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px); /* Safari support */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>

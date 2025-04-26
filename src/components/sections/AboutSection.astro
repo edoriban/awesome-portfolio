@@ -1,0 +1,442 @@
+---
+// Updated data based on LinkedIn profile
+const workExperience = [
+    {
+        title: "Software Engineer",
+        company: "Insytech",
+        period: "July 2018 - Present",
+        description:
+            "Working as a software engineer developing production control software in multiple projects for a transnational company (Polaris). Primarily using Visual Basic, JavaScript, and C#.",
+    },
+    {
+        title: "Junior Developer",
+        company: "TSI",
+        period: "July 2017 - June 2018",
+        description:
+            "Working as a Junior Developer, with a specific focus on SQL Server database management, establishing communication protocols with Atlas Copco industrial tools, and programming on SCADA software using VBScript.",
+    },
+
+    {
+        title: "Junior Developer",
+        company: "Tech Solutions",
+        period: "June 2016 - December 2016",
+        description:
+            "Assisted in the development of web applications and gained experience in front-end technologies including HTML, CSS, and JavaScript.",
+    },
+];
+
+const education = [
+    {
+        degree: "Software Engineering",
+        institution: "Universidad del Norte, A.C.",
+        period: "Unknown",
+        description:
+            "Software Engineering, Design Patterns, HTML, CSS, JavaScript, ASP.NET, Entity Framework, SQL Server and others.",
+    },
+];
+
+// Updated skills based on LinkedIn profile (Top Skills + About section)
+const skills = [
+    {
+        category: "Frontend", // Frontend technologies and languages
+        items: [
+            "React.js",
+            "JavaScript",
+            "TypeScript",
+            "Front-End Development",
+            "HTML5",
+            "CSS3",
+            "Tailwind CSS",
+            "Astro",
+        ],
+    },
+    {
+        category: "Backend", // Backend technologies and languages
+        items: [
+            "Node.js",
+            "ASP.NET MVC",
+            "C#",
+            "VBScript",
+            "Back-End Web Development",
+            "ASP.NET",
+            "Entity Framework",
+            "Python",
+            "GraphQL",
+            "WebSockets",
+            "OPC-UA",
+        ],
+    },
+    {
+        category: "Other Technologies", // Other technologies and tools
+        items: [
+            "Git",
+            "Redis",
+            "Docker",
+            "RabbitMQ",
+            "REST APIs",
+            "GraphQL",
+            "SQL",
+            "MongoDB",
+            "PostgreSQL",
+            "Sqlite",
+            "Store Procedures",
+        ],
+    },
+    {
+        category: "Soft Skills", // General skills or principles
+        items: [
+            "SOLID Design Principles",
+            "Design Patterns",
+            "Team work",
+            "Collaboration",
+            "Agile Methodologies",
+            "Problem Solving",
+            "Communication",
+            "Critical Thinking",
+            "Leadership",
+        ],
+    },
+];
+---
+
+<div class="container mx-auto px-4 py-20 max-w-4xl">
+    <h1 class="section-title mb-16 text-center relative" data-aos="fade-up">
+        My Professional <span class="gradient-text">Journey</span>
+    </h1>
+
+    <!-- Introduction Section - Updated with LinkedIn About text -->
+    <section class="mb-20">
+        <div class="premium-glass-panel p-8 rounded-xl shadow-glow">
+            <p class="text-lg lg:text-xl leading-relaxed mb-4 opacity-90">
+                I'm a software engineer based in Nuevo León, with 5+ years of
+                experience in the software industry. I have worked on a variety
+                of projects, ranging from web applications to desktop apps.
+            </p>
+            <p class="text-lg lg:text-xl leading-relaxed mb-4 opacity-90">
+                I am proficient in languages such as JavaScript/TypeScript,
+                VBScript and C#, and have experience using frameworks like
+                ReactJs and ASP.NET.
+            </p>
+            <p class="text-lg lg:text-xl leading-relaxed opacity-90">
+                In my current role, I work on a team responsible for developing
+                and maintaining a large industrial software platform and some
+                other web applications. In my spare time, I enjoy staying up to
+                date with the latest trends and technologies in the field, and I
+                also like to spend time outdoors and stay active.
+            </p>
+        </div>
+    </section>
+
+    <!-- Work Experience Timeline -->
+    <section class="mb-20">
+        <h2 class="subsection-title mb-12 text-center">
+            Work <span class="gradient-text-subtle">Experience</span>
+        </h2>
+
+        <div class="timeline">
+            {
+                workExperience.map((job, index) => (
+                    <div class="timeline-item">
+                        <div class="timeline-dot" />
+                        <div class="premium-glass-panel p-6 rounded-lg transform-on-hover">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+                                <h3 class="text-2xl font-bold text-white mb-1 sm:mb-0">
+                                    {job.title}
+                                </h3>
+                                <span class="period-badge">{job.period}</span>
+                            </div>
+                            <span class="text-lg font-semibold gradient-company block mb-3">
+                                {job.company}
+                            </span>
+                            <p class="opacity-80 leading-relaxed">
+                                {job.description}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="mb-20">
+        <h2 class="subsection-title mb-12 text-center">
+            <span class="gradient-text-subtle">Education</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+            {" "}
+            {/* Changed to grid-cols-1 as there's only one entry */}
+            {
+                education.map((edu) => (
+                    <div class="premium-glass-panel p-6 rounded-lg transform-on-hover">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+                            <h3 class="text-xl font-bold text-white mb-1 sm:mb-0">
+                                {edu.degree}
+                            </h3>
+                            {/* Period badge removed as period is unknown */}
+                            {/* <span class="period-badge edu-badge">{edu.period}</span> */}
+                        </div>
+                        <span class="text-lg font-semibold gradient-institute block mb-3">
+                            {edu.institution}
+                        </span>
+                        <p class="opacity-80">{edu.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section>
+        <h2 class="subsection-title mb-12 text-center">
+            Skills & <span class="gradient-text-subtle">Technologies</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                skills.map((skillGroup, i) => (
+                    <div class="premium-glass-panel p-6 rounded-lg skill-panel">
+                        <h3
+                            class={`text-xl font-bold mb-5 text-center category-title category-title-${i}`}
+                        >
+                            {skillGroup.category}
+                        </h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            {skillGroup.items.map((skill) => (
+                                <span class="skill-badge">{skill}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</div>
+
+<style>
+    .section-title {
+        font-size: 2.75rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        text-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+        content: "";
+        position: absolute;
+        left: 90px;
+        right: 90px;
+        bottom: 0;
+        height: 3px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(111, 113, 240, 0.685),
+            transparent
+        );
+    }
+
+    .subsection-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #e2e8f0;
+        position: relative;
+        display: inline-block;
+    }
+
+    .subsection-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 3px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(111, 113, 240, 0.685),
+            transparent
+        );
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-subtle {
+        background: linear-gradient(135deg, #818cf8, #c4b5fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-company {
+        background: linear-gradient(135deg, #60a5fa, #93c5fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-institute {
+        background: linear-gradient(135deg, #a78bfa, #c4b5fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .premium-glass-panel {
+        background: rgba(30, 25, 46, 0.068);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        box-shadow:
+            0 10px 30px -15px rgba(0, 0, 0, 0.3),
+            0 1px 2px rgba(255, 255, 255, 0.05),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .shadow-glow {
+        box-shadow:
+            0 10px 30px -15px rgba(0, 0, 0, 0.3),
+            0 0 20px 0 rgba(99, 102, 241, 0.15);
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 3rem;
+        margin-left: 0.75rem;
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+            to bottom,
+            rgba(99, 102, 241, 0.1),
+            rgba(99, 102, 241, 0.7),
+            rgba(99, 102, 241, 0.1)
+        );
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: -3.4rem;
+        top: 0.75rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: #6366f1;
+        z-index: 2;
+        border: 3px solid rgba(15, 23, 42, 0.8);
+        box-shadow:
+            0 0 0 4px rgba(99, 102, 241, 0.3),
+            0 0 10px rgba(99, 102, 241, 0.5);
+    }
+
+    .period-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: rgba(99, 102, 241, 0.15);
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border-radius: 9999px;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.5px;
+    }
+
+    .edu-badge {
+        background: rgba(139, 92, 246, 0.15);
+        color: #c4b5fd;
+        border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .skill-badge {
+        display: inline-block;
+        padding: 0.4rem 0.9rem;
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #e2e8f0;
+        transition: all 0.3s ease;
+        cursor: default;
+    }
+
+    .skill-badge:hover {
+        background: rgba(99, 102, 241, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-title {
+        position: relative;
+        display: inline-block;
+    }
+
+    .skill-panel:nth-child(1) .category-title {
+        background: linear-gradient(135deg, #60a5fa, #93c5fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .skill-panel:nth-child(2) .category-title {
+        background: linear-gradient(135deg, #a78bfa, #c4b5fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .skill-panel:nth-child(3) .category-title {
+        background: linear-gradient(135deg, #818cf8, #a5b4fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .skill-panel:nth-child(4) .category-title {
+        background: linear-gradient(135deg, #8b5cf6, #c4b5fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .transform-on-hover {
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .transform-on-hover:hover {
+        transform: translateY(-5px);
+        box-shadow:
+            0 15px 30px -15px rgba(0, 0, 0, 0.4),
+            0 0 15px rgba(99, 102, 241, 0.2);
+    }
+
+    section {
+        scroll-margin-top: 6rem;
+    }
+</style>
