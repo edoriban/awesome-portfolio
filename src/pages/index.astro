@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import AboutSection from "@components/sections/AboutSection.astro";
+import ProjectsSection from "@components/sections/ProjectsSection.astro";
 
 // Fetch GitHub profile data
 let githubData = null;
@@ -21,12 +22,19 @@ try {
 <Layout title="Edgar Olivan | Fullstack Developer">
 	<main>
 		<!-- Hero Section -->
-		<HeroSection githubData={githubData} />
+		<div id="home" class="scroll-mt-16">
+			<HeroSection githubData={githubData} error={error} />
+		</div>
 
 		<!-- About Section (Professional Journey) -->
 		<div id="about" class="scroll-mt-16">
 			<AboutSection />
 		</div>
+
+		<!-- Projects Section
+		<div id="projects" class="scroll-mt-16">
+			<ProjectsSection githubData={githubData} error={error} />
+		</div> -->
 	</main>
 </Layout>
 
