@@ -1,0 +1,387 @@
+.highlighted-text {
+    background: linear-gradient(135deg,
+            #60a5fa,
+            #e879f9,
+            #60a5fa);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-shadow:
+        0 0 10px rgba(96, 165, 250, 0.3),
+        0 0 20px rgba(232, 121, 249, 0.3);
+    position: relative;
+    padding: 0 2px;
+    animation: gradient-animation 4s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* Paneles con efecto vidrio */
+.premium-glass-panel {
+    background: rgba(30, 25, 46, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    box-shadow:
+        0 10px 30px -15px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.shadow-glow {
+    box-shadow:
+        0 10px 30px -15px rgba(0, 0, 0, 0.3),
+        0 0 20px 0 rgba(99, 102, 241, 0.15);
+}
+
+/* Efectos de hover */
+.transform-on-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transform-on-hover:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 15px 30px -15px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+/* Títulos de sección */
+.section-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    text-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 90px;
+    right: 90px;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(111, 113, 240, 0.685),
+            transparent);
+}
+
+.subsection-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    position: relative;
+    display: inline-block;
+}
+
+.subsection-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(111, 113, 240, 0.685),
+            transparent);
+}
+
+/* Textos con gradiente */
+
+.gradient-text {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-subtle {
+    background: linear-gradient(135deg, #818cf8, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-company {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-institute {
+    background: linear-gradient(135deg, #a78bfa, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.premium-glass-panel {
+    background: rgba(30, 25, 46, 0.068);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    box-shadow:
+        0 10px 30px -15px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.shadow-glow {
+    box-shadow:
+        0 10px 30px -15px rgba(0, 0, 0, 0.3),
+        0 0 20px 0 rgba(99, 102, 241, 0.15);
+}
+
+/* Timeline  content*/
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin-left: 0.75rem;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            rgba(99, 102, 241, 0.1),
+            rgba(99, 102, 241, 0.7),
+            rgba(99, 102, 241, 0.1));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -3.4rem;
+    top: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #6366f1;
+    z-index: 2;
+    border: 3px solid rgba(15, 23, 42, 0.8);
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.3),
+        0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* Badges y etiquetas */
+
+.period-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+}
+
+.edu-badge {
+    background: rgba(139, 92, 246, 0.15);
+    color: #c4b5fd;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.skill-badge {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-badge:hover {
+    background: rgba(99, 102, 241, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+    position: relative;
+    display: inline-block;
+}
+
+.skill-panel:nth-child(1) .category-title {
+    background: linear-gradient(135deg, #60a5fa, #93c5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-panel:nth-child(2) .category-title {
+    background: linear-gradient(135deg, #a78bfa, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-panel:nth-child(3) .category-title {
+    background: linear-gradient(135deg, #818cf8, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-panel:nth-child(4) .category-title {
+    background: linear-gradient(135deg, #8b5cf6, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.transform-on-hover {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.transform-on-hover:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 15px 30px -15px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+/* Efecto de borde animado */
+
+.animated-border {
+    position: relative;
+    overflow: hidden;
+    border: none !important;
+    padding: 2px;
+    border-radius: 0.75rem;
+}
+
+.animated-border::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(30deg,
+            transparent 0%,
+            transparent 33%,
+            #6366f1 45%,
+            #60a5fa 47%,
+            #a855f7 49%,
+            #6366f1 51%,
+            transparent 100%,
+            transparent 55%);
+    background-size: 400%;
+    animation: borderMove 10s linear infinite;
+}
+
+.animated-border::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 2px;
+    background: rgb(24, 24, 27);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0.7rem;
+}
+
+.premium-glass-panel.animated-border {
+    padding: 2rem;
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 50% 100%;
+    }
+}
+
+/* Scroll down mouse indicator */
+
+.scroll-down-indicator {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-down-indicator:hover {
+    opacity: 1;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Hide scroll indicator on larger screens or after some scroll */
+/* You might want to add JavaScript to hide it after the user starts scrolling */
+@media (min-width: 768px) {
+    /* Example: Hide on medium screens and up */
+    /* .scroll-down-indicator {
+            display: none;
+        } */
+}
