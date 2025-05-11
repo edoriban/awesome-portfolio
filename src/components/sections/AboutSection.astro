@@ -1,5 +1,6 @@
 ---
 import "@styles/shared.css";
+import SkillsCarousel from "./SkillsCarousel.astro";
 const workExperience = [
     {
         title: "Software Engineer",
@@ -24,69 +25,6 @@ const education = [
         period: "Unknown",
         description:
             "Software Engineering, Design Patterns, HTML, CSS, JavaScript, ASP.NET, Entity Framework, SQL Server and others.",
-    },
-];
-
-// Updated skills based on LinkedIn profile (Top Skills + About section)
-const skills = [
-    {
-        category: "Frontend", // Frontend technologies and languages
-        items: [
-            "React.js",
-            "JavaScript",
-            "TypeScript",
-            "Front-End Development",
-            "HTML5",
-            "CSS3",
-            "Tailwind CSS",
-            "Astro",
-        ],
-    },
-    {
-        category: "Backend", // Backend technologies and languages
-        items: [
-            "Node.js",
-            "ASP.NET MVC",
-            "C#",
-            "VBScript",
-            "Back-End Web Development",
-            "ASP.NET",
-            "Entity Framework",
-            "Python",
-            "GraphQL",
-            "WebSockets",
-            "OPC-UA",
-        ],
-    },
-    {
-        category: "Other Technologies", // Other technologies and tools
-        items: [
-            "Git",
-            "Redis",
-            "Docker",
-            "RabbitMQ",
-            "REST APIs",
-            "GraphQL",
-            "SQL",
-            "MongoDB",
-            "PostgreSQL",
-            "Sqlite",
-            "Store Procedures",
-        ],
-    },
-    {
-        category: "Soft Skills", // General skills or principles
-        items: [
-            "SOLID Design Principles",
-            "Design Patterns",
-            "Team work",
-            "Collaboration",
-            "Agile Methodologies",
-            "Problem Solving",
-            "Communication",
-            "Critical Thinking",
-            "Leadership",
-        ],
     },
 ];
 ---
@@ -191,29 +129,7 @@ const skills = [
     </section>
 
     <!-- Skills Section -->
-    <section>
-        <h2 class="subsection-title mb-12 text-center">
-            Skills & <span class="highlighted-text">Technologies</span>
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {
-                skills.map((skillGroup, i) => (
-                    <div class="premium-glass-panel p-6 rounded-lg skill-panel">
-                        <h3
-                            class={`text-xl font-bold mb-5 text-center category-title category-title-${i}`}
-                        >
-                            {skillGroup.category}
-                        </h3>
-                        <div class="flex flex-wrap gap-3 justify-center">
-                            {skillGroup.items.map((skill) => (
-                                <span class="skill-badge">{skill}</span>
-                            ))}
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
-    </section>
+    <SkillsCarousel />
 </div>
 
 <style></style>

@@ -1,0 +1,270 @@
+---
+/* Eliminada la importación de Icon de astro-icon */
+
+// Define tech colors y eliminados los iconos
+const techColors = {
+    // Frontend
+    "React.js": { color: "#61DAFB" },
+    JavaScript: { color: "#F7DF1E" },
+    TypeScript: { color: "#3178C6" },
+    "Front-End Development": { color: "#E44D26" },
+    HTML5: { color: "#E34F26" },
+    CSS3: { color: "#1572B6" },
+    "Tailwind CSS": { color: "#06B6D4" },
+    Astro: { color: "#FF5D01" },
+
+    // Backend
+    "Node.js": { color: "#339933" },
+    "ASP.NET MVC": { color: "#512BD4" },
+    "C#": { color: "#512BD4" },
+    VBScript: { color: "#0078D7" },
+    "Back-End Web Development": { color: "#6c757d" },
+    "ASP.NET": { color: "#512BD4" },
+    "Entity Framework": { color: "#512BD4" },
+    Python: { color: "#3776AB" },
+    GraphQL: { color: "#E10098" },
+    WebSockets: { color: "#4B32C3" },
+    "OPC-UA": { color: "#0078D7" },
+
+    // Other Technologies
+    Git: { color: "#F05032" },
+    Redis: { color: "#DC382D" },
+    Docker: { color: "#2496ED" },
+    RabbitMQ: { color: "#FF6600" },
+    "REST APIs": { color: "#41BDF5" },
+    SQL: { color: "#4479A1" },
+    MongoDB: { color: "#47A248" },
+    PostgreSQL: { color: "#336791" },
+    Sqlite: { color: "#003B57" },
+    "Store Procedures": { color: "#4479A1" },
+
+    // Soft Skills
+    "SOLID Design Principles": { color: "#6c757d" },
+    "Design Patterns": { color: "#6c757d" },
+    "Team work": { color: "#6c757d" },
+    Collaboration: { color: "#6c757d" },
+    "Agile Methodologies": { color: "#6c757d" },
+    "Problem Solving": { color: "#6c757d" },
+    Communication: { color: "#6c757d" },
+    "Critical Thinking": { color: "#6c757d" },
+    Leadership: { color: "#6c757d" },
+};
+
+// Skills data
+const skills = [
+    {
+        category: "Frontend",
+        items: [
+            "React.js",
+            "JavaScript",
+            "TypeScript",
+            "Front-End Development",
+            "HTML5",
+            "CSS3",
+            "Tailwind CSS",
+            "Astro",
+        ],
+    },
+    {
+        category: "Backend",
+        items: [
+            "Node.js",
+            "ASP.NET MVC",
+            "C#",
+            "VBScript",
+            "Back-End Web Development",
+            "ASP.NET",
+            "Entity Framework",
+            "Python",
+            "GraphQL",
+            "WebSockets",
+            "OPC-UA",
+        ],
+    },
+    {
+        category: "Other Technologies",
+        items: [
+            "Git",
+            "Redis",
+            "Docker",
+            "RabbitMQ",
+            "REST APIs",
+            "GraphQL",
+            "SQL",
+            "MongoDB",
+            "PostgreSQL",
+            "Sqlite",
+            "Store Procedures",
+        ],
+    },
+    {
+        category: "Soft Skills",
+        items: [
+            "SOLID Design Principles",
+            "Design Patterns",
+            "Team work",
+            "Collaboration",
+            "Agile Methodologies",
+            "Problem Solving",
+            "Communication",
+            "Critical Thinking",
+            "Leadership",
+        ],
+    },
+];
+
+// Preparar todas las skills en un formato para el carrusel
+const allSkills = skills.flatMap((group) =>
+    group.items.map((skill) => {
+        const techColor = techColors[skill as keyof typeof techColors];
+        return {
+            name: skill,
+            category: group.category,
+            color: techColor?.color || "#6c757d",
+        };
+    }),
+);
+
+// Crear 4 filas mezclando las habilidades
+const rows: Array<
+    Array<{
+        name: string;
+        category: string;
+        color: string;
+    }>
+> = [[], [], [], []];
+
+allSkills.forEach((skill, index) => {
+    rows[index % 4].push(skill);
+});
+
+// Asegurar que cada fila tenga suficientes elementos para el desplazamiento continuo
+const rowsWithDuplicates = rows.map((row) => [...row, ...row]);
+
+const speeds = ["15s", "20s", "18s", "22s"];
+const directions = ["normal", "reverse", "normal", "reverse"];
+---
+
+<section class="skills-section">
+    <h2
+        class="section-title mb-12 text-center w-full flex justify-center items-center"
+    >
+        Skills & <span class="highlighted-text">Technologies</span>
+    </h2>
+    <div class="skills-carousel-fullwidth">
+        <div class="skills-carousel-container">
+            {
+                rowsWithDuplicates.map((row, rowIndex) => (
+                    <div
+                        class="skills-row"
+                        style={`animation-duration: ${speeds[rowIndex]}; animation-direction: ${directions[rowIndex]};`}
+                    >
+                        {row.map((skill) => (
+                            <div
+                                class="skill-badge"
+                                style={`--skill-color: ${skill.color};`}
+                            >
+                                <span class="skill-name">{skill.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .skills-section {
+        position: relative;
+        overflow: visible;
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .skills-carousel-fullwidth {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .skills-carousel-container {
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+        padding: 2rem 0;
+        margin: 0 auto;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    .skills-carousel-container::before,
+    .skills-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 12vw;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .skills-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        animation-name: scroll;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        min-width: fit-content;
+        will-change: transform;
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .skill-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.6rem 1.2rem;
+        background: rgba(var(--skill-color-rgb, 99, 102, 241), 0.1);
+        border: 1px solid rgba(var(--skill-color-rgb, 99, 102, 241), 0.3);
+        border-radius: 2rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--skill-color, #e2e8f0);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+    .skill-badge {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: var(--skill-color);
+        color: var(--skill-color);
+        box-shadow:
+            0 0 8px rgba(0, 0, 0, 0.2),
+            0 0 4px var(--skill-color, rgba(99, 102, 241, 0.3));
+        transition: all 0.3s ease-out;
+    }
+
+    .skill-badge:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow:
+            0 5px 15px rgba(0, 0, 0, 0.2),
+            0 0 8px var(--skill-color, rgba(99, 102, 241, 0.5));
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 10;
+    }
+</style>
