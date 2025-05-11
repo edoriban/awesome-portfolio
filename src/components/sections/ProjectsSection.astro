@@ -1,220 +1,254 @@
 ---
 // ProjectsSection.astro
-const { githubData, error } = Astro.props;
 import "@styles/shared.css";
-const GITHUB_USERNAME = "edoriban"; // Añadimos la definición del username
 
-// Array para almacenar los repositorios
-let repos = [];
-
-try {
-    // Solo hacemos la petición si no recibimos datos válidos desde la prop
-    if (!githubData || !Array.isArray(githubData)) {
-        const response = await fetch(
-            `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`,
-        );
-
-        if (!response.ok) {
-            throw new Error(`Error al cargar repositorios: ${response.status}`);
-        }
-
-        repos = await response.json();
-    } else {
-        // Si ya recibimos datos desde las props, los usamos
-        repos = githubData;
-    }
-
-    // Para cada repositorio, obtener contenido del README
-    for (const repo of repos) {
-        try {
-            const readmeResponse = await fetch(
-                `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/readme`,
-            );
-            if (readmeResponse.ok) {
-                const readmeData = await readmeResponse.json();
-                // La API de GitHub devuelve el contenido codificado en Base64
-                const content = atob(readmeData.content);
-                // Obtener solo las primeras líneas del README
-                repo.readmeExcerpt = content.split("\n").slice(0, 4).join("\n");
-            } else {
-                repo.readmeExcerpt = "No README available";
-            }
-        } catch (error) {
-            repo.readmeExcerpt = "Could not load README";
-        }
-    }
-} catch (error) {
-    console.error("Error loading repositories:", error);
-}
+// Aquí defines manualmente tus proyectos
+const projects = [
+    {
+        name: "Annotation Tool",
+        description:
+            "Application for labeling objects in images, similar to labelme. Allows you to easily and visually create annotation datasets.",
+        image: "/AnnotationTool.jpg",
+        language: "TypeScript",
+        readmeExcerpt:
+            "Web tool for image annotation and dataset generation for computer vision model training.",
+        url: "github.com/diconsi/vision-device",
+    },
+    {
+        name: "awesomeHMI",
+        description:
+            "HMI to display work instructions, process steps, visual aids, help ticket creation, product and material information, and operation times.",
+        image: "/awesomeHMI.png",
+        language: "TypeScript",
+        readmeExcerpt:
+            "Interface for control and monitoring of industrial processes, supporting instructions, tickets, and material visualization.",
+        url: "",
+    },
+    {
+        name: "clientDashboard",
+        description:
+            "Dashboard for devices with YOLOv8 models. View device information, upload new trainings, and manage existing models.",
+        image: "/clientDashboard.jpg",
+        language: "TypeScript",
+        readmeExcerpt:
+            "Control panel for managing inference models and monitoring edge devices.",
+        url: "",
+    },
+    {
+        name: "clientStreaming",
+        description:
+            "Application to view YOLOv8 model execution and see real-time detections for each camera with inference stream.",
+        image: "/clientStreaming.jpg",
+        language: "TypeScript",
+        readmeExcerpt:
+            "Live streaming of inferences and object detections across multiple cameras.",
+        url: "",
+    },
+    // Add more projects here
+];
 ---
 
-<section id="projects" class="py-20">
+<section id="projects" class="relative overflow-hidden">
+    <div id="particles-js" class="absolute inset-0 -z-10"></div>
     <div class="container mx-auto px-4">
         <h2 class="section-title mb-16 text-center relative">
             My <span class="gradient-text">Projects</span>
         </h2>
-
         {
-            repos && repos.length > 0 ? (
-                <div class="bento-grid">
-                    {repos.map((repo) => (
-                        <a
-                            href={repo.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="bento-item"
-                        >
-                            <div class="repo-card premium-glass-panel">
-                                <h3 class="text-xl font-bold">{repo.name}</h3>
-                                <p class="mb-3 text-sm opacity-80">
-                                    {repo.description ||
-                                        "No description available"}
-                                </p>
+            projects && projects.length > 0 ? (
+                <div class="projects-grid">
+                    {projects.map((project) => (
+                        <div class={`project-item group animated-border`}>
+                            <div class="project-card premium-glass-panel relative h-full overflow-hidden">
+                                <div class="glass-overlay absolute top-0 left-0 w-full h-full -z-10" />
 
-                                <div class="readme-preview">
-                                    <h4 class="text-sm font-medium">README</h4>
-                                    <pre class="text-xs">
-                                        {repo.readmeExcerpt ||
-                                            "No content available"}
-                                    </pre>
+                                {/* Imagen en posición absoluta */}
+                                <div class="project-image-container max-h-[220px] absolute left-0 w-full h-[220px] pt-0 overflow-hidden transition-opacity duration-300 ease-out">
+                                    <img
+                                        src={project.image}
+                                        alt={project.name + " preview"}
+                                        class="project-image w-full h-full opacity-60 object-cover transition-opacity duration-300 ease-out group-hover:opacity-100"
+                                    />
                                 </div>
 
-                                <div class="repo-footer">
-                                    {repo.language && (
-                                        <span class="lang-badge">
-                                            {repo.language}
-                                        </span>
-                                    )}
-                                    <span>⭐ {repo.stargazers_count || 0}</span>
+                                {/* El contenido textual ahora siempre es visible, pero con animación de color y sombra al hover */}
+                                <div class="project-content relative z-20 flex flex-col items-center pt-[220px] px-6 pb-6 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-xl ">
+                                    <h3 class="text-2xl font-extrabold mb-2 mt-4 project-title text-white drop-shadow-lg transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl">
+                                        {project.name}
+                                    </h3>
+                                    <p class="mb-3 text-base font-medium project-description text-slate-200 drop-shadow transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl">
+                                        {project.description}
+                                    </p>
+                                    <div class="project-footer mt-4 w-full flex justify-between items-center">
+                                        {project.language && (
+                                            <span class="lang-badge transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:bg-violet-700 group-hover:text-white">
+                                                {project.language}
+                                            </span>
+                                        )}
+                                        {project.url && (
+                                            <a
+                                                href={project.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="cta-btn transition-all duration-300 opacity-70 group-hover:opacity-100 px-4 py-1 text-base rounded-lg shadow-sm"
+                                                style="font-size: 1rem; padding: 0.4rem 1.2rem; border-radius: 0.75rem; margin-top: 0;"
+                                            >
+                                                Ver en GitHub
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     ))}
                 </div>
             ) : (
-                <p class="text-center opacity-70">No repositories found</p>
+                <p class="text-center opacity-70">No projects found</p>
             )
         }
     </div>
 </section>
 
 <style>
+    #particles-js {
+        animation: gradient-move 10s infinite alternate;
+    }
+    @keyframes gradient-move {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+    }
     .section-title {
-        font-size: 2.75rem; /* 44px */
-        font-weight: 700;
-        letter-spacing: -0.025em;
-        text-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        text-shadow: 0 0 30px rgba(147, 51, 234, 0.5);
         padding-bottom: 1rem;
     }
-
-    .section-title::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 3px;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(99, 102, 241, 0.6),
-            transparent
-        );
-    }
-
-    .gradient-text {
-        background: linear-gradient(135deg, #6366f1, #a855f7);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .bento-grid {
+    .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
     }
-
-    /* Crea el patrón de bento grid con elementos de diferentes tamaños */
-    .bento-grid .bento-item:nth-child(3n + 1) {
-        grid-column: span 2;
-    }
-
-    .bento-item {
+    .project-item {
+        position: relative;
+        border-radius: 1.5rem;
+        overflow: hidden;
         transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
+            transform 0.4s cubic-bezier(0.4, 2, 0.3, 1),
+            box-shadow 0.4s cubic-bezier(0.4, 2, 0.3, 1);
+        box-shadow: 0 2px 16px 0 rgba(80, 60, 180, 0.1);
+        background: transparent;
     }
-
-    .bento-item:hover {
-        transform: translateY(-5px);
+    .project-item:hover {
         box-shadow:
-            0 15px 30px -15px rgba(0, 0, 0, 0.4),
-            0 0 15px rgba(99, 102, 241, 0.2);
+            0 12px 40px 0 rgba(147, 51, 234, 0.18),
+            0 2px 16px 0 rgba(80, 60, 180, 0.1);
+        z-index: 2;
     }
-
-    .repo-card {
-        background: rgba(30, 25, 46, 0.5);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(99, 102, 241, 0.1);
-        border-radius: 12px;
-        padding: 1.5rem;
+    .cta-btn {
+        background: linear-gradient(90deg, #9333ea 0%, #3b82f6 100%);
+        color: #fff;
+        font-weight: 700;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 24px 0 #9333ea44;
+        text-shadow: 0 2px 8px #0008;
+        transition:
+            background 0.3s,
+            transform 0.3s;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin-top: 1rem;
+        /* animation and transform/opacity are not needed as you handle with inline style and group-hover */
+    }
+    .group:hover .cta-btn {
+        background: linear-gradient(90deg, #3b82f6 0%, #9333ea 100%);
+    }
+    .project-card {
+        border: 2px solid rgba(147, 51, 234, 0.13);
+        border-radius: 1.5rem;
+        padding: 0;
         height: 100%;
         display: flex;
         flex-direction: column;
-        box-shadow:
-            0 10px 30px -15px rgba(0, 0, 0, 0.3),
-            0 1px 2px rgba(255, 255, 255, 0.05);
-    }
-
-    .readme-preview {
-        background: rgba(0, 0, 0, 0.2);
-        padding: 1rem;
-        border-radius: 8px;
-        overflow: hidden;
-        margin: 1rem 0;
-        flex-grow: 1;
+        background: linear-gradient(
+            135deg,
+            rgba(36, 33, 70, 0.95) 80%,
+            rgba(147, 51, 234, 0.08) 100%
+        );
+        backdrop-filter: blur(12px);
+        box-shadow: 0 2px 16px 0 rgba(80, 60, 180, 0.1);
+        transition:
+            border-color 0.3s,
+            box-shadow 0.3s,
+            filter 0.5s;
         position: relative;
     }
-
-    .readme-preview pre {
-        margin: 0;
-        white-space: pre-wrap;
-        max-height: 120px;
-        overflow: hidden;
+    .project-item:hover .project-card {
+        border-color: #9333ea;
+        box-shadow:
+            0 0 32px 0 #9333ea55,
+            0 12px 40px 0 rgba(147, 51, 234, 0.18),
+            0 2px 16px 0 rgba(80, 60, 180, 0.1);
+        filter: drop-shadow(0 0 24px #9333ea88);
     }
-
-    .readme-preview::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 30px;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+    .project-title {
+        color: #fff;
+        text-shadow:
+            0 2px 8px #000,
+            0 1px 2px #9333ea44;
+        letter-spacing: -0.01em;
+        word-break: break-word;
+        transition: color 0.3s;
     }
-
-    .repo-footer {
+    .project-description {
+        color: #e0e7ff;
+        font-weight: 500;
+        text-shadow: 0 1px 2px #1e1b4b44;
+        margin-bottom: 0.5rem;
+        min-height: 2.5em;
+    }
+    .project-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: auto;
+        padding-top: 1rem;
     }
-
     .lang-badge {
-        background: rgba(99, 102, 241, 0.15);
-        color: #a5b4fc;
-        padding: 0.25rem 0.75rem;
+        background: linear-gradient(
+            90deg,
+            rgba(147, 51, 234, 0.18) 0%,
+            rgba(30, 27, 75, 0.18) 100%
+        );
+        color: #c084fc;
+        padding: 0.45rem 1.1rem;
         border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        font-size: 0.92rem;
+        font-weight: 700;
+        border: 1px solid rgba(147, 51, 234, 0.22);
+        box-shadow: 0 1px 4px 0 rgba(80, 60, 180, 0.08);
+        transition: all 0.3s;
     }
-
-    @media (max-width: 768px) {
-        .bento-grid .bento-item:nth-child(3n + 1) {
-            grid-column: span 1;
-        }
+    .project-image {
+        border-radius: 1.5rem 1.5rem 0 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-out;
+    }
+    .project-item:hover .project-image {
+        filter: none;
+    }
+    .project-image-container {
+        z-index: 5;
+        border-radius: 1.5rem 1.5rem 0 0;
+        overflow: hidden;
+        will-change: opacity;
     }
 </style>
