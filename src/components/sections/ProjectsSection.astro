@@ -9,17 +9,17 @@ const projects = [
         description:
             "Application for labeling objects in images, similar to labelme. Allows you to easily and visually create annotation datasets.",
         image: "/AnnotationTool.jpg",
-        language: "TypeScript",
+        languages: ["TypeScript"],
         readmeExcerpt:
             "Web tool for image annotation and dataset generation for computer vision model training.",
-        url: "github.com/diconsi/vision-device",
+        url: "https://github.com/diconsi/vision-device",
     },
     {
         name: "awesomeHMI",
         description:
             "HMI to display work instructions, process steps, visual aids, help ticket creation, product and material information, and operation times.",
         image: "/awesomeHMI.png",
-        language: "TypeScript",
+        languages: ["TypeScript"],
         readmeExcerpt:
             "Interface for control and monitoring of industrial processes, supporting instructions, tickets, and material visualization.",
         url: "",
@@ -29,7 +29,7 @@ const projects = [
         description:
             "Dashboard for devices with YOLOv8 models. View device information, upload new trainings, and manage existing models.",
         image: "/clientDashboard.jpg",
-        language: "TypeScript",
+        languages: ["TypeScript"],
         readmeExcerpt:
             "Control panel for managing inference models and monitoring edge devices.",
         url: "",
@@ -39,7 +39,7 @@ const projects = [
         description:
             "Application to view YOLOv8 model execution and see real-time detections for each camera with inference stream.",
         image: "/clientStreaming.jpg",
-        language: "TypeScript",
+        languages: ["TypeScript"],
         readmeExcerpt:
             "Live streaming of inferences and object detections across multiple cameras.",
         url: "",
@@ -55,7 +55,7 @@ const projects = [
             My <span class="highlighted-text">Projects</span>
         </h2>
         {
-            projects && projects.length > 0 ? (
+            projects.length > 0 ? ( // Simplificado el condicional
                 <div class="projects-grid">
                     {projects.map((project) => (
                         <div class={`project-item group animated-border`}>
@@ -66,7 +66,7 @@ const projects = [
                                 <div class="project-image-container max-h-[220px] absolute left-0 w-full h-[220px] pt-0 overflow-hidden transition-opacity duration-300 ease-out">
                                     <img
                                         src={project.image}
-                                        alt={project.name + " preview"}
+                                        alt={`Vista previa del proyecto ${project.name}`}
                                         class="project-image w-full h-full opacity-60 object-cover transition-opacity duration-300 ease-out group-hover:opacity-100"
                                     />
                                 </div>
@@ -79,21 +79,25 @@ const projects = [
                                     <p class="mb-3 text-base font-medium project-description text-slate-200 drop-shadow transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl">
                                         {project.description}
                                     </p>
-                                    <div class="project-footer mt-4 w-full flex justify-between items-center">
-                                        {project.language && (
-                                            <span class="lang-badge transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:bg-violet-700 group-hover:text-white">
-                                                {project.language}
-                                            </span>
-                                        )}
+                                    <div class="project-footer mt-4 w-full flex flex-col items-center gap-2">
+                                        <div class="flex flex-wrap justify-center gap-2">
+                                            {project.languages &&
+                                                project.languages.map(
+                                                    (lang) => (
+                                                        <span class="lang-badge transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:bg-violet-700 group-hover:text-white">
+                                                            {lang}
+                                                        </span>
+                                                    ),
+                                                )}
+                                        </div>
                                         {project.url && (
                                             <a
                                                 href={project.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                class="cta-btn transition-all duration-300 opacity-70 group-hover:opacity-100 px-4 py-1 text-base rounded-lg shadow-sm"
-                                                style="font-size: 1rem; padding: 0.4rem 1.2rem; border-radius: 0.75rem; margin-top: 0;"
+                                                class="cta-btn w-full transition-all duration-300 opacity-80 group-hover:opacity-100 px-4 py-1 text-base rounded-lg shadow-sm text-white font-bold bg-gradient-to-r from-purple-600 to-blue-500 mt-2 mx-auto text-center min-w-[120px] max-w-[180px]"
                                             >
-                                                Ver en GitHub
+                                                View on GitHub
                                             </a>
                                         )}
                                     </div>
