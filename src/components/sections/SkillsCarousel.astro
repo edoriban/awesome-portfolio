@@ -1,6 +1,4 @@
 ---
-/* Eliminada la importación de Icon de astro-icon */
-
 // Define tech colors y eliminados los iconos
 const techColors = {
     // Frontend
@@ -39,15 +37,15 @@ const techColors = {
     "Store Procedures": { color: "#4479A1" },
 
     // Soft Skills
-    "SOLID Design Principles": { color: "#6c757d" },
-    "Design Patterns": { color: "#6c757d" },
-    "Team work": { color: "#6c757d" },
-    Collaboration: { color: "#6c757d" },
-    "Agile Methodologies": { color: "#6c757d" },
-    "Problem Solving": { color: "#6c757d" },
-    Communication: { color: "#6c757d" },
-    "Critical Thinking": { color: "#6c757d" },
-    Leadership: { color: "#6c757d" },
+    "SOLID Design Principles": { color: "#FF9800" }, // Orange
+    "Design Patterns": { color: "#00B8D9" }, // Cyan
+    "Team work": { color: "#43A047" }, // Green
+    Collaboration: { color: "#F50057" }, // Pink
+    "Agile Methodologies": { color: "#FFD600" }, // Yellow
+    "Problem Solving": { color: "#7C4DFF" }, // Purple
+    Communication: { color: "#2979FF" }, // Blue
+    "Critical Thinking": { color: "#FF3D00" }, // Red
+    Leadership: { color: "#00C853" }, // Emerald
 };
 
 // Skills data
@@ -174,95 +172,4 @@ const directions = ["normal", "reverse", "normal", "reverse"];
     </div>
 </section>
 
-<style>
-    .skills-section {
-        position: relative;
-        overflow: visible;
-        width: 100vw;
-        left: 50%;
-        transform: translateX(-50%);
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .skills-carousel-fullwidth {
-        width: 100vw;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .skills-carousel-container {
-        position: relative;
-        width: 100vw;
-        overflow: hidden;
-        padding: 2rem 0;
-        margin: 0 auto;
-    }
-
-    .skills-carousel-container::before,
-    .skills-carousel-container::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 12vw;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    .skills-row {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        animation-name: scroll;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        min-width: fit-content;
-        will-change: transform;
-    }
-
-    @keyframes scroll {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-50%);
-        }
-    }
-
-    .skill-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.6rem 1.2rem;
-        background: rgba(var(--skill-color-rgb, 99, 102, 241), 0.1);
-        border: 1px solid rgba(var(--skill-color-rgb, 99, 102, 241), 0.3);
-        border-radius: 2rem;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--skill-color, #e2e8f0);
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        white-space: nowrap;
-    }
-
-    .skill-badge {
-        background: rgba(0, 0, 0, 0.2);
-        border-color: var(--skill-color);
-        color: var(--skill-color);
-        box-shadow:
-            0 0 8px rgba(0, 0, 0, 0.2),
-            0 0 4px var(--skill-color, rgba(99, 102, 241, 0.3));
-        transition: all 0.3s ease-out;
-    }
-
-    .skill-badge:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow:
-            0 5px 15px rgba(0, 0, 0, 0.2),
-            0 0 8px var(--skill-color, rgba(99, 102, 241, 0.5));
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 10;
-    }
-</style>
+<style></style>
