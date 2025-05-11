@@ -17,48 +17,159 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
+	<div class="rhombus"></div>
+	<div class="rhombus"></div>
+	<div class="rhombus"></div>
+	<div class="rhombus"></div>
 	<body>
 		<Header />
 		<slot />
 	</body>
+
+	<style is:global>
+		:root {
+			color-scheme: light dark;
+		}
+
+		html {
+			font-family: "Onest Variable", system-ui, sans-serif;
+			scroll-behavior: smooth;
+		}
+
+		body {
+			background: linear-gradient(
+				135deg,
+				#0f172a 0%,
+				#1e293b 40%,
+				#1e1b4b 70%,
+				#1e1b4b 100%
+			);
+
+			position: relative;
+			color: #e2e8f0;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+
+		body::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: radial-gradient(
+					rgba(99, 102, 241, 0.15) 1px,
+					transparent 1.5px
+				),
+				radial-gradient(rgba(192, 132, 252, 0.1) 1px, transparent 1.5px);
+			background-size: 40px 40px;
+			background-position:
+				0 0,
+				20px 20px;
+			pointer-events: none;
+			z-index: -1;
+		}
+
+		/* Rombos giratorios */
+		@keyframes floatRhombus {
+			0% {
+				transform: translate(0, 0) rotate(0deg);
+				opacity: 0.3;
+			}
+			33% {
+				transform: translate(15px, -15px) rotate(120deg);
+				opacity: 0.7;
+			}
+			66% {
+				transform: translate(-15px, 15px) rotate(240deg);
+				opacity: 0.5;
+			}
+			100% {
+				transform: translate(0, 0) rotate(360deg);
+				opacity: 0.3;
+			}
+		}
+
+		@keyframes borderGlow {
+			0% {
+				border-color: rgba(99, 102, 241, 0.3);
+			}
+			50% {
+				border-color: rgba(232, 121, 249, 0.7);
+			}
+			100% {
+				border-color: rgba(99, 102, 241, 0.3);
+			}
+		}
+
+		body::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+			pointer-events: none;
+		}
+
+		.rhombus {
+			position: fixed;
+			border-radius: 8px;
+			background: rgba(99, 102, 241, 0.05);
+			border: 1px solid rgba(99, 102, 241, 0.3);
+			transform: rotate(45deg);
+			pointer-events: none;
+			box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+			z-index: -1;
+			backdrop-filter: blur(2px);
+			animation:
+				floatRhombus 20s infinite ease-in-out,
+				borderGlow 8s infinite alternate;
+		}
+
+		.rhombus:nth-child(1) {
+			width: 250px;
+			height: 250px;
+			top: 10%;
+			left: -100px;
+			animation-delay: 0s;
+			border-color: rgba(96, 165, 250, 0.4);
+		}
+
+		.rhombus:nth-child(2) {
+			width: 350px;
+			height: 350px;
+			top: 50%;
+			right: -150px;
+			animation-delay: -5s;
+			animation-duration: 25s;
+			border-color: rgba(232, 121, 249, 0.4);
+		}
+
+		.rhombus:nth-child(3) {
+			width: 200px;
+			height: 200px;
+			bottom: 5%;
+			left: 10%;
+			animation-delay: -10s;
+			animation-duration: 22s;
+			border-color: rgba(139, 92, 246, 0.4);
+		}
+
+		.rhombus:nth-child(4) {
+			width: 180px;
+			height: 180px;
+			bottom: 30%;
+			right: 15%;
+			animation-delay: -8s;
+			animation-duration: 28s;
+			border-color: rgba(99, 102, 241, 0.4);
+		}
+	</style>
+
+
 </html>
-<style is:global>
-	:root {
-		color-scheme: light dark;
-	}
-
-	html {
-		font-family: "Onest Variable", system-ui, sans-serif;
-		scroll-behavior: smooth;
-	}
-
-	body {
-		/* Gradiente estático sutil */
-		background: linear-gradient(
-			135deg,
-			#0f172a 0%,
-			/* slate-900 más oscuro */ #1e293b 40%,
-			/* slate-800 */ #1e1b4b 70%,
-			/* indigo-950 */ #1e1b4b 100% /* indigo-950 */
-		);
-
-		/* Patrón geométrico con puntos */
-		background-image: radial-gradient(
-				rgba(99, 102, 241, 0.1) 1px,
-				transparent 1px
-			),
-			radial-gradient(rgba(192, 132, 252, 0.1) 1px, transparent 1px);
-		background-size:
-			50px 50px,
-			30px 30px;
-		background-position:
-			0 0,
-			25px 25px;
-
-		/* Asegura que el contenido ocupe al menos toda la altura de la ventana */
-		color: #e2e8f0; /* Color de texto base (slate-200) */
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-</style>
