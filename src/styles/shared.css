@@ -322,7 +322,8 @@
 }
 
 .skill-badge:hover {
-    /* ...mantén aquí el hover si lo tienes... */
+    box-shadow: 0 0 16px 2px rgba(99, 102, 241, 0.25), 0 2px 8px rgba(80, 60, 180, 0.10);
+    transform: scale(1.07);
 }
 
 /* Responsividad */
