@@ -14,7 +14,10 @@ import emailjs from "emailjs-com";
             name="name"
             id="name"
             required
+            autoComplete="name"
+            autocapitalize="words"
             class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white"
+            style="will-change: box-shadow, border-color;"
         />
     </div>
     <div>
@@ -28,7 +31,10 @@ import emailjs from "emailjs-com";
             name="email"
             id="email"
             required
+            autoComplete="email"
+            autocapitalize="off"
             class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white"
+            style="will-change: box-shadow, border-color;"
         />
     </div>
     <div>
@@ -42,8 +48,10 @@ import emailjs from "emailjs-com";
             name="message"
             rows="4"
             required
+            autoComplete="off"
+            autocapitalize="sentences"
             class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white"
-        ></textarea>
+            style="will-change: box-shadow, border-color;"></textarea>
     </div>
     <div>
         <button

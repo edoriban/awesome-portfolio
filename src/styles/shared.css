@@ -30,6 +30,10 @@
     }
 }
 
+.hover\:text-purple-400 {
+    will-change: color;
+}
+
 
 /* Paneles con efecto vidrio */
 .premium-glass-panel {

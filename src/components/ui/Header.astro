@@ -1,6 +1,7 @@
 <header
     id="main-header"
     class="fixed top-0 left-0 right-0 z-50 flex justify-center py-3 transition-all duration-300 ease-in-out"
+    style="will-change: transform, opacity;"
 >
     <div class="flex justify-between items-center w-full max-w-[1120px] px-4">
         <a href="/" aria-label="Go to homepage">
@@ -27,8 +28,19 @@
 </header>
 
 <script>
-    const header = document.getElementById("main-header");
+    // Throttle para optimizar el scroll
+    function throttle(fn, wait) {
+        let lastTime = 0;
+        return function (...args) {
+            const now = Date.now();
+            if (now - lastTime >= wait) {
+                lastTime = now;
+                fn.apply(this, args);
+            }
+        };
+    }
 
+    const header = document.getElementById("main-header");
     const handleScroll = () => {
         if (header && window.scrollY > 50) {
             header.classList.add("header-scrolled");
@@ -36,18 +48,33 @@
             header.classList.remove("header-scrolled");
         }
     };
+    const throttledScroll = throttle(handleScroll, 100);
+
+    let listenersAdded = false;
+    function addListeners() {
+        if (!listenersAdded) {
+            document.addEventListener("scroll", throttledScroll, {
+                passive: true,
+            });
+            document.addEventListener("astro:page-load", handleScroll);
+            listenersAdded = true;
+        }
+    }
+    function removeListeners() {
+        if (listenersAdded) {
+            document.removeEventListener("scroll", throttledScroll);
+            document.removeEventListener("astro:page-load", handleScroll);
+            listenersAdded = false;
+        }
+    }
 
     if (header) {
-        document.addEventListener("scroll", handleScroll, { passive: true });
-
-        document.addEventListener("astro:page-load", () => {
-            handleScroll();
-        });
-
+        addListeners();
         handleScroll();
+        // Limpieza robusta para evitar fugas de memoria
+        window.addEventListener("beforeunload", removeListeners);
+        window.addEventListener("astro:page-unload", removeListeners);
     } else {
         console.warn("Element with ID 'main-header' not found.");
     }
 </script>
-
-<style></style>

@@ -9,6 +9,7 @@ const { githubData } = Astro.props;
                 src={githubData.avatar_url}
                 alt={`Avatar for ${githubData.login}`}
                 class="w-32 h-32 rounded-full border-2 border-gray-700"
+                loading="lazy"
             />
         </div>
         <div>
