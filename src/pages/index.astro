@@ -3,7 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import AboutSection from "@components/sections/AboutSection.astro";
 import ProjectsSection from "@components/sections/ProjectsSection.astro";
-
+import ContactSection from "@components/sections/ContactSection.astro"; // Cambiado de ContactForm a ContactSection
+import FooterSection from "@components/sections/FooterSection.astro";
 // Fetch GitHub profile data
 let githubData = null;
 let error = null;
@@ -34,6 +35,14 @@ try {
 		<!-- Projects Section-->
 		<div id="projects" class="scroll-mt-16">
 			<ProjectsSection githubData={githubData} error={error} />
+		</div>
+		<!-- Contact Section -->
+		<div id="contact" class="scroll-mt-16">
+			<ContactSection />
+		</div>
+		<!-- Footer Section -->
+		<div id="footer" class="scroll-mt-16">
+			<FooterSection />
 		</div>
 	</main>
 </Layout>

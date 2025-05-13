@@ -1,0 +1,89 @@
+<form id="contactForm" class="space-y-6">
+    <div>
+        <label
+            for="name"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Nombre</label
+        >
+        <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white"
+        />
+    </div>
+    <div>
+        <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Email</label
+        >
+        <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white"
+        />
+    </div>
+    <div>
+        <label
+            for="message"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Mensaje</label
+        >
+        <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white"
+        ></textarea>
+    </div>
+    <div>
+        <button
+            type="submit"
+            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+        >
+            Enviar Email
+        </button>
+    </div>
+</form>
+
+<div
+    id="toast"
+    class="fixed bottom-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-md hidden z-50"
+>
+    ¡Email enviado correctamente!
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        const toast = document.getElementById("toast");
+
+        if (form && toast) {
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                // Aquí iría la lógica para enviar el email realmente.
+                // Por ahora, solo simularemos el envío.
+
+                // Simulación de envío exitoso
+                console.log("Formulario enviado (simulación)");
+                // Muestra el toast
+                toast.classList.remove("hidden");
+                setTimeout(() => {
+                    toast.classList.add("hidden");
+                }, 3000); // Oculta el toast después de 3 segundos
+
+                // Limpia el formulario (opcional)
+                // form.reset();
+            });
+        } else {
+            console.error(
+                "No se pudo encontrar el formulario de contacto o el elemento toast.",
+            );
+        }
+    });
+</script>
