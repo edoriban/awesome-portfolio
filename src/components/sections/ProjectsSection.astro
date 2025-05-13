@@ -44,6 +44,16 @@ const projects = [
             "Live streaming of inferences and object detections across multiple cameras.",
         url: "",
     },
+    {
+        name: "AI Discord Bot",
+        description:
+            "Discord bot that uses Gemini 2.0 Flash to generate text responses based on user input.",
+        image: "/discordBot.jpg",
+        languages: ["nodejs"],
+        readmeExcerpt:
+            "Discord bot that uses Gemini 2.0 Flash to generate text responses based on user input.",
+        url: "https://github.com/edoriban/discord-bot",
+    },
     // Add more projects here
 ];
 ---
@@ -57,54 +67,56 @@ const projects = [
         {
             projects.length > 0 ? ( // Simplificado el condicional
                 <div class="projects-grid">
-                    {projects.map((project) => (
-                        <div class={`project-item group animated-border`}>
-                            <div class="project-card premium-glass-panel relative h-full overflow-hidden">
-                                <div class="glass-overlay absolute top-0 left-0 w-full h-full -z-10" />
+                    <div class="carousel-container overflow-x-auto whitespace-nowrap flex gap-6 pb-4">
+                        {projects.map((project) => (
+                            <div class="project-item group animated-border inline-block align-top min-w-[320px] max-w-[340px] w-[90vw] sm:w-[340px]">
+                                <div class="project-card premium-glass-panel relative h-full overflow-hidden">
+                                    <div class="glass-overlay absolute top-0 left-0 w-full h-full -z-10" />
 
-                                {/* Imagen en posición absoluta */}
-                                <div class="project-image-container max-h-[220px] absolute left-0 w-full h-[220px] pt-0 overflow-hidden transition-opacity duration-300 ease-out">
-                                    <img
-                                        src={project.image}
-                                        alt={`Vista previa del proyecto ${project.name}`}
-                                        class="project-image w-full h-full opacity-60 object-cover transition-opacity duration-300 ease-out group-hover:opacity-100"
-                                    />
-                                </div>
+                                    {/* Imagen en posición absoluta */}
+                                    <div class="project-image-container max-h-[220px] absolute left-0 w-full h-[220px] pt-0 overflow-hidden transition-opacity duration-300 ease-out">
+                                        <img
+                                            src={project.image}
+                                            alt={`Vista previa del proyecto ${project.name}`}
+                                            class="project-image w-full h-full opacity-60 object-cover transition-opacity duration-300 ease-out group-hover:opacity-100"
+                                        />
+                                    </div>
 
-                                {/* El contenido textual ahora siempre es visible, pero con animación de color y sombra al hover */}
-                                <div class="project-content relative z-20 flex flex-col items-center pt-[220px] px-6 pb-6 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-xl ">
-                                    <h3 class="text-2xl font-extrabold mb-2 mt-4 project-title text-white drop-shadow-lg transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl">
-                                        {project.name}
-                                    </h3>
-                                    <p class="mb-3 text-base font-medium project-description text-slate-200 drop-shadow transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl">
-                                        {project.description}
-                                    </p>
-                                    <div class="project-footer mt-4 w-full flex flex-col items-center gap-2">
-                                        <div class="flex flex-wrap justify-center gap-2">
-                                            {project.languages &&
-                                                project.languages.map(
-                                                    (lang) => (
-                                                        <span class="lang-badge transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:bg-violet-700 group-hover:text-white">
-                                                            {lang}
-                                                        </span>
-                                                    ),
-                                                )}
+                                    {/* El contenido textual ahora siempre es visible, pero con animación de color y sombra al hover */}
+                                    <div class="project-content relative z-20 flex flex-col items-center pt-[220px] px-6 pb-6 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-xl ">
+                                        <h3 class="text-2xl font-extrabold mb-2 mt-4 project-title text-white drop-shadow-lg transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl">
+                                            {project.name}
+                                        </h3>
+                                        <p class="mb-3 text-base font-medium project-description text-slate-200 drop-shadow transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl whitespace-normal break-words">
+                                            {project.description}
+                                        </p>
+                                        <div class="project-footer mt-4 w-full flex flex-col items-center gap-2">
+                                            <div class="flex flex-wrap justify-center gap-2">
+                                                {project.languages &&
+                                                    project.languages.map(
+                                                        (lang) => (
+                                                            <span class="lang-badge transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:bg-violet-700 group-hover:text-white">
+                                                                {lang}
+                                                            </span>
+                                                        ),
+                                                    )}
+                                            </div>
+                                            {project.url && (
+                                                <a
+                                                    href={project.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="cta-btn w-full transition-all duration-300 opacity-80 group-hover:opacity-100 px-4 py-1 text-base rounded-lg shadow-sm text-white font-bold bg-gradient-to-r from-purple-600 to-blue-500 mt-2 mx-auto text-center min-w-[120px] max-w-[180px]"
+                                                >
+                                                    View on GitHub
+                                                </a>
+                                            )}
                                         </div>
-                                        {project.url && (
-                                            <a
-                                                href={project.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="cta-btn w-full transition-all duration-300 opacity-80 group-hover:opacity-100 px-4 py-1 text-base rounded-lg shadow-sm text-white font-bold bg-gradient-to-r from-purple-600 to-blue-500 mt-2 mx-auto text-center min-w-[120px] max-w-[180px]"
-                                            >
-                                                View on GitHub
-                                            </a>
-                                        )}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             ) : (
                 <p class="text-center opacity-70">No projects found</p>
