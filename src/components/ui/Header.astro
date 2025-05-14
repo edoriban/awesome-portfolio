@@ -25,11 +25,11 @@
             >
             <div class="animated-border ml-2">
                 <a
-                    href="/resume.pdf"
-                    download
+                    id="download-resume-btn"
                     class="premium-glass-panel flex items-center gap-2 font-semibold text-white px-5 py-2 rounded-2xl shadow-glow transform-on-hover focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300"
                     aria-label="Download resume in PDF"
-                    style="border-radius: 1.25rem; min-width: 150px; justify-content: center;"
+                    style="border-radius: 1.25rem; min-width: 150px; justify-content: center; cursor: pointer;"
+                    tabindex="0"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -96,10 +96,40 @@
     if (header) {
         addListeners();
         handleScroll();
-        // Limpieza robusta para evitar fugas de memoria
         window.addEventListener("beforeunload", removeListeners);
         window.addEventListener("astro:page-unload", removeListeners);
     } else {
         console.warn("Element with ID 'main-header' not found.");
+    }
+</script>
+<script type="module">
+    const btn = document.getElementById("download-resume-btn");
+    if (btn) {
+        btn.addEventListener("click", async () => {
+            try {
+                const info = await fetch("/info.json").then((res) =>
+                    res.json(),
+                );
+
+                const module = await import(
+                    "../src/utils/generateResumePdf.ts"
+                );
+
+                if (typeof window.pdfMake === "undefined") {
+                    console.error("pdfMake not loaded!");
+                    alert(
+                        "Could not generate PDF: PDF library not loaded correctly.",
+                    );
+                    return;
+                }
+
+                module.generateResumePdf(info, window.pdfMake);
+            } catch (error) {
+                console.error("Error generating PDF:", error);
+                alert(
+                    "There was an error generating your resume. Please try again later.",
+                );
+            }
+        });
     }
 </script>

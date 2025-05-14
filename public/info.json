@@ -1,0 +1,180 @@
+{
+    "name": "Edgar Olivan",
+    "title": "Fullstack Developer",
+    "location": "Nuevo León, Mexico",
+    "contact": {
+        "email": "edgar.olivan@email.com",
+        "phone": "+52 81 1234 5678",
+        "website": "https://yourwebsite.dev",
+        "github": "eolivan",
+        "linkedin": "edoriban"
+    },
+    "summary": "Fullstack Developer with over 5 years of experience from Nuevo León, Mexico. Passionate about crafting cutting-edge web solutions that turn ideas into powerful digital experiences. I'm a software engineer based in Nuevo León, with 5+ years of experience in the software industry. I have worked on a variety of projects, ranging from web applications to desktop apps. I am proficient in languages such as JavaScript/TypeScript, VBScript and C#, and have experience using frameworks like ReactJs and ASP.NET.",
+    "experience": [
+        {
+            "company": "Insytech",
+            "role": "Software Engineer",
+            "location": "",
+            "period": "July 2018 - Present",
+            "website": "",
+            "tasks": [
+                "Working as a software engineer developing production control software in multiple projects for a transnational company (Polaris). Primarily using Visual Basic, JavaScript, and C#."
+            ]
+        },
+        {
+            "company": "TSI",
+            "role": "Junior Developer",
+            "location": "",
+            "period": "July 2017 - June 2018",
+            "website": "",
+            "tasks": [
+                "Working as a Junior Developer, with a specific focus on SQL Server database management, establishing communication protocols with Atlas Copco industrial tools, and programming on SCADA software using VBScript."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "institution": "Universidad del Norte, A.C.",
+            "degree": "Software Engineering",
+            "location": "",
+            "period": "Unknown",
+            "details": "Software Engineering, Design Patterns, HTML, CSS, JavaScript, ASP.NET, Entity Framework, SQL Server and others."
+        }
+    ],
+    "projects": [
+        {
+            "name": "Annotation Tool",
+            "role": "",
+            "description": "Application for labeling objects in images, similar to labelme. Allows you to easily and visually create annotation datasets. Web tool for image annotation and dataset generation for computer vision model training.",
+            "technologies": [
+                "TypeScript",
+                "React",
+                "Node.js"
+            ],
+            "url": "https://github.com/diconsi/vision-device",
+            "image": "/AnnotationTool.jpg"
+        },
+        {
+            "name": "awesomeHMI",
+            "role": "",
+            "description": "HMI to display work instructions, process steps, visual aids, help ticket creation, product and material information, and operation times. Interface for control and monitoring of industrial processes, supporting instructions, tickets, and material visualization.",
+            "technologies": [
+                "TypeScript",
+                "React",
+                "Node.js",
+                "Electron",
+                "postgresql"
+            ],
+            "url": "",
+            "image": "/awesomeHMI.png"
+        },
+        {
+            "name": "clientDashboard",
+            "role": "",
+            "description": "Dashboard for devices with YOLOv8 models. View device information, upload new trainings, and manage existing models. Control panel for managing inference models and monitoring edge devices.",
+            "technologies": [
+                "TypeScript",
+                "React",
+                "Python"
+            ],
+            "url": "",
+            "image": "/clientDashboard.jpg"
+        },
+        {
+            "name": "clientStreaming",
+            "role": "",
+            "description": "Application to view YOLOv8 model execution and see real-time detections for each camera with inference stream. Live streaming of inferences and object detections across multiple cameras.",
+            "technologies": [
+                "TypeScript",
+                "React",
+                "Python",
+                "fastapi"
+            ],
+            "url": "",
+            "image": "/clientStreaming.jpg"
+        },
+        {
+            "name": "AI Discord Bot",
+            "role": "",
+            "description": "Discord bot that uses Gemini 2.0 Flash to generate text responses based on user input.",
+            "technologies": [
+                "nodejs"
+            ],
+            "url": "https://github.com/edoriban/discord-bot",
+            "image": "/discordBot.png"
+        }
+    ],
+    "skills": {
+        "web_technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "TypeScript"
+        ],
+        "programming_languages": [
+            "C#",
+            "VBScript",
+            "Python"
+        ],
+        "frameworks_libraries": [
+            "React.js",
+            "Tailwind CSS",
+            "Astro",
+            "Node.js",
+            "ASP.NET MVC",
+            "ASP.NET",
+            "Entity Framework",
+            "GraphQL"
+        ],
+        "tools_platforms": [
+            "Git",
+            "Redis",
+            "Docker",
+            "RabbitMQ",
+            "REST APIs",
+            "WebSockets",
+            "OPC-UA"
+        ],
+        "databases": [
+            "SQL",
+            "MongoDB",
+            "PostgreSQL",
+            "Sqlite",
+            "Store Procedures"
+        ],
+        "soft_skills": [
+            "SOLID Design Principles",
+            "Design Patterns",
+            "Team work",
+            "Collaboration",
+            "Agile Methodologies",
+            "Problem Solving",
+            "Communication",
+            "Critical Thinking",
+            "Leadership"
+        ]
+    },
+    "certifications": [
+        {
+            "name": "Full-Stack Web Development",
+            "issuer": "CodeAcademy",
+            "year": 2020
+        },
+        {
+            "name": "AWS Certified Developer",
+            "issuer": "Amazon Web Services",
+            "year": 2019
+        }
+    ],
+    "languages": [
+        {
+            "name": "Spanish",
+            "level": "Native"
+        },
+        {
+            "name": "English",
+            "level": "Intermediate"
+        }
+    ],
+    "references": "Available upon request"
+}
